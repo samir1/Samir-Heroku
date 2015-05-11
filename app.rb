@@ -15,10 +15,6 @@ get '/apparentTemperature' do
 	"#{ForecastIO.forecast(@@lat, @@lng)[:currently][:apparentTemperature]}"
 end
 
-# get 'precipProbability' do
-# 	"#{ForecastIO.forecast(@@lat, @@lng)[:currently][:precipProbability]}"
-# end
-
 get '/precipProbability' do
   "#{ForecastIO.forecast(@@lat, @@lng)[:currently][:precipProbability]}"
 end
