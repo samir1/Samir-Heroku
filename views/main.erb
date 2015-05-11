@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Samir's Weather Website</title>
+</head>
+<body>
+<h1>Samir's Weather Website</h1>
+Provides weather information for IoT projects
+<br />
+<br />
+<br />
+<br />
+Current weather info for lat lng: <%= "(#{@@lat}, #{@@lng})" %>
+<br />
+<br />
+<% forecast = ForecastIO.forecast(@@lat, @@lng)[:currently] %>
+<a href="/apparentTemperature">Apparent temperature</a><br />
+<%= forecast[:apparentTemperature] %>
+<br />
+<br />
+<a href="/precipProbability">Probability of precipitation</a><br />
+<%= forecast[:precipProbability]*100 %>
+<br />
+<br />
+<a href="/summary">Summary</a><br />
+<%= forecast[:summary] %>
+<%puts forecast %>
+</body>
+</html>
