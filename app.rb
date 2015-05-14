@@ -12,21 +12,18 @@ get '/' do
 	erb :main
 end
 
-get '/apparentTemperature' do
+get '/apparentTemperature.json' do
+	content_type :json
 	"#{ForecastIO.forecast(@@lat, @@lng)[:currently][:apparentTemperature]}"
 end
 
-
-get '/apparentTemperature.json' do
-  content_type :json
-  "#{ForecastIO.forecast(@@lat, @@lng)[:currently][:apparentTemperature]}"
+get '/precipProbability.json' do
+	content_type :json
+	"#{ForecastIO.forecast(@@lat, @@lng)[:currently][:precipProbability]}"
 end
 
-get '/precipProbability' do
-  "#{ForecastIO.forecast(@@lat, @@lng)[:currently][:precipProbability]}"
-end
-
-get '/summary' do
+get '/summary.json' do
+	content_type :json
 	"#{ForecastIO.forecast(@@lat, @@lng)[:currently][:summary]}"
 end
 
