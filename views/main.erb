@@ -14,15 +14,15 @@ Current weather info for lat lng: <%= "(#{@@lat}, #{@@lng})" %>
 <br />
 <br />
 <% forecast = ForecastIO.forecast(@@lat, @@lng)[:currently] %>
-<a href="/apparentTemperature">Apparent temperature</a><br />
+<a href="/apparentTemperature.json">Apparent temperature</a><br />
 <%= forecast[:apparentTemperature] %>
 <br />
 <br />
-<a href="/precipProbability">Probability of precipitation</a><br />
+<a href="/precipProbability.json">Probability of precipitation</a><br />
 <%= forecast[:precipProbability]*100 %>
 <br />
 <br />
-<a href="/summary">Summary</a><br />
+<a href="/summary.json">Summary</a><br />
 <%= forecast[:summary] %>
 <%puts forecast %>
 </body>
