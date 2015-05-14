@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'forecast_io'
+require 'json'
 
 configure do
 	ForecastIO.api_key = ENV['FORECASTIO_KEY']
@@ -13,6 +14,12 @@ end
 
 get '/apparentTemperature' do
 	"#{ForecastIO.forecast(@@lat, @@lng)[:currently][:apparentTemperature]}"
+end
+
+
+get '/apparentTemperature.json' do
+  content_type :json
+  { :apparentTemperature => "#{ForecastIO.forecast(@@lat, @@lng)[:currently][:apparentTemperature]}" }.to_json
 end
 
 get '/precipProbability' do
