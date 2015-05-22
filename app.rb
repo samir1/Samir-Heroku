@@ -14,7 +14,7 @@ end
 
 get '/apparentTemperature.json' do
 	content_type :json
-	"#{ForecastIO.forecast(@@lat, @@lng)[:currently][:apparentTemperature]}"
+	"T: #{ForecastIO.forecast(@@lat, @@lng)[:currently][:apparentTemperature]}"
 end
 
 get '/precipProbability.json' do
