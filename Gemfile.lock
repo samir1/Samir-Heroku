@@ -8,6 +8,7 @@ GEM
       hashie
       multi_json
     hashie (3.4.1)
+    json (1.8.2)
     multi_json (1.11.0)
     multipart-post (2.0.0)
     rack (1.6.0)
@@ -24,4 +25,5 @@ PLATFORMS
 
 DEPENDENCIES
   forecast_io
+  json
   sinatra
