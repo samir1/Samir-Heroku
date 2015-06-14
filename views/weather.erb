@@ -1,0 +1,17 @@
+<h2>Provides weather information for IoT projects</h2>
+<br />
+Current weather info for lat lng: <%= "(#{@@lat}, #{@@lng})" %>
+<br />
+<br />
+<% forecast = ForecastIO.forecast(@@lat, @@lng)[:currently] %>
+<a href="/apparentTemperature.json">Apparent temperature</a><br />
+<%= forecast[:apparentTemperature] %>
+<br />
+<br />
+<a href="/precipProbability.json">Probability of precipitation</a><br />
+<%= forecast[:precipProbability]*100 %>
+<br />
+<br />
+<a href="/summary.json">Summary</a><br />
+<%= forecast[:summary] %>
+<%puts forecast %>

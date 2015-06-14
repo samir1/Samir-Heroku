@@ -12,6 +12,10 @@ get '/' do
 	erb :main
 end
 
+get '/weather' do
+	erb :weather
+end
+
 get '/apparentTemperature.json' do
 	content_type :json
 	"|T: #{ForecastIO.forecast(@@lat, @@lng)[:currently][:apparentTemperature]}"
