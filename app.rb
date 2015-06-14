@@ -5,8 +5,8 @@ require 'geocoder'
 
 configure do
 	ForecastIO.api_key = ENV['FORECASTIO_KEY']
-	@@lat = 29.779312
-	@@lng = -95.460570
+	@@lat = 42.3654347
+	@@lng = -71.258595
 end
 
 get '/' do
