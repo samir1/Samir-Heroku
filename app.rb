@@ -41,5 +41,5 @@ get '/updatelatlng/:address' do
 	@@lng = latlng[1]
 	puts "new lat is #{@@lat}"
 	puts "new lng is #{@@lng}"
-	redirect to '/'
+	redirect to '/weather'
 end
