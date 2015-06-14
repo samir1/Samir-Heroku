@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'forecast_io'
 require 'json'
+require 'geocoder'
 
 configure do
 	ForecastIO.api_key = ENV['FORECASTIO_KEY']
@@ -31,12 +32,13 @@ get '/summary.json' do
 	"|#{ForecastIO.forecast(@@lat, @@lng)[:currently][:summary]}"
 end
 
-get '/updatelatlng/:lat/:lng' do
+get '/updatelatlng/:address' do
+	latlng = Geocoder.coordinates(params[:address])
 	puts 'updating lat lng'
 	puts "old lat is #{@@lat}"
 	puts "old lng is #{@@lng}"
-	@@lat = params[:lat]
-	@@lng = params[:lng]
+	@@lat = latlng[0]
+	@@lng = latlng[1]
 	puts "new lat is #{@@lat}"
 	puts "new lng is #{@@lng}"
 	redirect to '/'

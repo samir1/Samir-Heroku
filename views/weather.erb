@@ -1,6 +1,18 @@
-<h2>Provides weather information for IoT projects</h2>
-<br />
-Current weather info for lat lng: <%= "(#{@@lat}, #{@@lng})" %>
+<% require 'geocoder' %>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Samir's Cloud - Weather</title>
+</head>
+<body>
+<h1>Samir's Cloud - Weather</h1>
+<h3>Provides weather information for IoT projects</h3>
+Current weather info for:
+<% query = "#{@@lat},#{@@lng}" %>
+<% result = Geocoder.search(query).first %>
+<% if (result) %>
+	<%= result.address %>
+<% end %>
 <br />
 <br />
 <% forecast = ForecastIO.forecast(@@lat, @@lng)[:currently] %>
@@ -15,3 +27,6 @@ Current weather info for lat lng: <%= "(#{@@lat}, #{@@lng})" %>
 <a href="/summary.json">Summary</a><br />
 <%= forecast[:summary] %>
 <%puts forecast %>
+
+</body>
+</html>
