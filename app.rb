@@ -17,19 +17,16 @@ get '/weather' do
 	erb :weather
 end
 
-get '/apparentTemperature.json' do
-	content_type :json
-	"|T: #{ForecastIO.forecast(@@lat, @@lng)[:currently][:apparentTemperature]}"
+get '/apparentTemperature' do
+	"T: #{ForecastIO.forecast(@@lat, @@lng)[:currently][:apparentTemperature]}"
 end
 
-get '/precipProbability.json' do
-	content_type :json
-	"|P: #{ForecastIO.forecast(@@lat, @@lng)[:currently][:precipProbability]*100}"
+get '/precipProbability' do
+	"P: #{ForecastIO.forecast(@@lat, @@lng)[:currently][:precipProbability]*100}"
 end
 
-get '/summary.json' do
-	content_type :json
-	"|#{ForecastIO.forecast(@@lat, @@lng)[:currently][:summary]}"
+get '/summary' do
+	"#{ForecastIO.forecast(@@lat, @@lng)[:currently][:summary]}"
 end
 
 get '/updatelatlng/:address' do
