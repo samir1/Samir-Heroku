@@ -32,12 +32,12 @@ end
 
 get '/lamp_on' do
   protected!
-  open(ENV['LAMP_ON'], :http_basic_authentication=>[ENV['LAMP_USERNAME'], ENV['LAMP_PASSWORD']])
+  open(ENV['LAMP_URL']+'on', :http_basic_authentication=>[ENV['LAMP_USERNAME'], ENV['LAMP_PASSWORD']])
 end
 
 get '/lamp_off' do
   protected!
-  open(ENV['LAMP_OFF'], :http_basic_authentication=>[ENV['LAMP_USERNAME'], ENV['LAMP_PASSWORD']])
+  open(ENV['LAMP_URL']+'off', :http_basic_authentication=>[ENV['LAMP_USERNAME'], ENV['LAMP_PASSWORD']])
 end
 
 get '/' do
