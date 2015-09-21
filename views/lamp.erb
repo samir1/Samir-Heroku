@@ -11,7 +11,7 @@
 <script type="text/javascript">
 	function turnLamp(command) {
 		$.ajax({
-			url: "http://samiryun.student.cwru.edu/arduino/"+command,
+			url: "<%= ENV['LAMP_URL'] %>"+command,
 			dataType: "jsonp"
 		});
 	}
