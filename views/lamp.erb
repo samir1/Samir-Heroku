@@ -10,14 +10,9 @@
 <body>
 <script type="text/javascript">
 	function turnLamp(command) {
-		console.log("<%= ENV['LAMP_URL'] %>"+command);
 		$.ajax({
-			url: "<%= ENV['LAMP_URL'] %>"+command,
-			type: 'GET',
-			username: "<%= ENV['LAMP_USERNAME'] %>",
-			password: "<%= ENV['LAMP_PASSWORD'] %>",
+			url: "/lamp_"+command,
 			dataType: "jsonp",
-			error:function(exception){alert('Exeption:'+exception);}
 		});
 	}
 </script>

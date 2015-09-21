@@ -4,6 +4,7 @@ require 'sinatra'
 require 'forecast_io'
 require 'json'
 require 'geocoder'
+require 'open-uri'
 
 configure do
 	ForecastIO.api_key = ENV['FORECASTIO_KEY']
@@ -27,6 +28,16 @@ end
 get '/lamp' do
   protected!
   erb :lamp
+end
+
+get '/lamp_on' do
+  protected!
+  open(ENV['LAMP_ON'], :http_basic_authentication=>[ENV['LAMP_USERNAME'], ENV['LAMP_PASSWORD']])
+end
+
+get '/lamp_off' do
+  protected!
+  open(ENV['LAMP_OFF'], :http_basic_authentication=>[ENV['LAMP_USERNAME'], ENV['LAMP_PASSWORD']])
 end
 
 get '/' do
