@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'sinatra'
 require 'forecast_io'
 require 'json'
@@ -7,6 +9,24 @@ configure do
 	ForecastIO.api_key = ENV['FORECASTIO_KEY']
 	@@lat = 42.3654347
 	@@lng = -71.258595
+end
+
+helpers do
+  def protected!
+    return if authorized?
+    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    halt 401, "Not authorized\n"
+  end
+
+  def authorized?
+    @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == [ENV['SAMIR_HEROKU_USERNAME'], ENV['SAMIR_HEROKU_PASSWORD']]
+  end
+end
+
+get '/lamp' do
+  protected!
+  erb :lamp
 end
 
 get '/' do

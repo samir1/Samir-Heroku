@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<title>Lamp Switch</title>
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+</head>
+<body>
+<script type="text/javascript">
+	function turnLamp(command) {
+		$.ajax({
+			url: "http://samiryun.student.cwru.edu/arduino/"+command,
+			dataType: "jsonp"
+		});
+	}
+</script>
+	<div class='container'>
+		<h1>Lamp Switch</h1>
+		<br />
+		<button class='btn btn-success' style='width: 140px !important;' onclick="turnLamp('on');">Turn ON Lamp</button><br />
+		<br />
+		<button class='btn btn-danger' style='width: 140px !important;' onclick="turnLamp('off');">Turn OFF Lamp</button><br />
+		<br />
+		<script src='http://zeptojs.com/zepto.min.js'></script>
+		<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+	</div>
+</body>
+</html>
