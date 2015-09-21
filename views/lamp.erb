@@ -12,6 +12,8 @@
 	function turnLamp(command) {
 		$.ajax({
 			url: "<%= ENV['LAMP_URL'] %>"+command,
+			username: "<%= ENV['LAMP_USERNAME'] %>",
+			password: "<%= ENV['LAMP_PASSWORD'] %>",
 			dataType: "jsonp"
 		});
 	}
