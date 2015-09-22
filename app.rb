@@ -8,8 +8,8 @@ require 'open-uri'
 
 configure do
 	ForecastIO.api_key = ENV['FORECASTIO_KEY']
-	@@lat = 42.3654347
-	@@lng = -71.258595
+	@@lat = 41.512538
+	@@lng = -81.604228
 end
 
 helpers do
